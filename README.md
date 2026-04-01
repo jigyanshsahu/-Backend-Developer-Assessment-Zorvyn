@@ -21,7 +21,7 @@ A **production-grade REST API** built with **Node.js**, **Express**, and **Mongo
 | **Logging** | Morgan (HTTP) + structured app-level logging |
 | **API Docs** | Swagger UI at `/api-docs` |
 | **Tests** | Jest + Supertest + MongoMemoryServer (no real DB required) |
-| **Docker** | Multi-stage Dockerfile + docker-compose |
+| **Testing** | Comprehensive Jest suite with Supertest |
 
 ---
 
@@ -105,27 +105,6 @@ The server starts at `http://localhost:5000`
 
 ---
 
-## 🐳 Docker Setup
-
-```bash
-# Start both the API and MongoDB with a single command
-docker-compose up --build
-
-# Run in detached mode
-docker-compose up -d --build
-
-# Stop and remove containers
-docker-compose down
-
-# Stop and remove containers + volumes (clears DB data)
-docker-compose down -v
-```
-
-Services:
-- **API**: `http://localhost:5000`
-- **MongoDB**: `localhost:27017`
-
----
 
 ## 📖 API Documentation
 
@@ -293,7 +272,6 @@ Tests use `mongodb-memory-server` — no external MongoDB needed.
 | Password hashing | bcrypt with 12 salt rounds (OWASP recommended) |
 | User enumeration | Login returns same 401 for invalid email AND wrong password |
 | Token safety | `password` field excluded from all DB queries by default |
-| Non-root Docker | Container runs as `nodeapp` user (UID 1001) |
 
 ---
 
